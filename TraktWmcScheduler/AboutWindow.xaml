@@ -1,0 +1,58 @@
+﻿<Window x:Class="TraktWmcScheduler.AboutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="About" SizeToContent="Height" Width="456" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner"
+        Hyperlink.RequestNavigate="Hyperlink_Navigate">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="136px" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="136px" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <Image Grid.Row="0" Grid.Column="0" Width="128px" Height="128px" Source="Images/TraktWmcScheduler.png" />
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <TextBlock FontWeight="Bold" Padding="0,2">Trakt WMC Scheduler</TextBlock>
+            <TextBlock Padding="0,2">Copyright © 2016 Brian O'Keefe</TextBlock>
+            <TextBlock Padding="0,2"><Hyperlink NavigateUri="LICENSE.txt">License Information</Hyperlink></TextBlock>
+            <TextBlock Padding="0,2" TextWrapping="Wrap" FontSize="10">Icon based on the TV icon from the CRYSTAL BW Addon icon pack by <Hyperlink NavigateUri="http://pit-tux.deviantart.com/">Pit-tux</Hyperlink></TextBlock>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <TextBlock FontWeight="Bold" Padding="0,2">Library Licenses</TextBlock>
+            <TextBlock Padding="0,2">
+                <Hyperlink NavigateUri="https://msdn.microsoft.com/en-us/data/ef.aspx">EntityFramework</Hyperlink>
+                <Span>-</Span>
+                <Hyperlink NavigateUri="https://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm">Microsoft .NET Library License</Hyperlink>
+            </TextBlock>
+            <TextBlock Padding="0,2">
+                <Hyperlink NavigateUri="http://www.newtonsoft.com/json">JSON.Net</Hyperlink>
+                <Span>-</Span>
+                <Hyperlink NavigateUri="https://raw.githubusercontent.com/JamesNK/Newtonsoft.Json/master/LICENSE.md">MIT License</Hyperlink>
+            </TextBlock>
+            <TextBlock Padding="0,2">
+                <Hyperlink NavigateUri="https://github.com/wwarby/TraktSharp">TraktSharp</Hyperlink>
+                <Span>-</Span>
+                <Hyperlink NavigateUri="https://raw.githubusercontent.com/wwarby/TraktSharp/master/LICENSE">MIT License</Hyperlink>
+            </TextBlock>
+            <TextBlock Padding="0,2">
+                <Hyperlink NavigateUri="https://www.sqlite.org">SQLite</Hyperlink>
+                <Span>-</Span>
+                <Hyperlink NavigateUri="https://www.sqlite.org/copyright.html">Public Domain</Hyperlink>
+            </TextBlock>
+            <TextBlock Padding="0,2">
+                <Hyperlink NavigateUri="http://netcommon.sourceforge.net">Common.Logging</Hyperlink>
+                <Span>-</Span>
+                <Hyperlink NavigateUri="http://www.apache.org/licenses/LICENSE-2.0">Apache License</Hyperlink>
+            </TextBlock>
+            <TextBlock Padding="0,2">
+                <Hyperlink NavigateUri="http://www.quartz-scheduler.net">Quartz.NET</Hyperlink>
+                <Span>-</Span>
+                <Hyperlink NavigateUri="http://www.apache.org/licenses/LICENSE-2.0">Apache License</Hyperlink>
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</Window>

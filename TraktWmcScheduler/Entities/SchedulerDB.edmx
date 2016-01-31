@@ -1,0 +1,110 @@
+﻿<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+<!-- EF Runtime content -->
+<edmx:Runtime>
+<!-- SSDL content -->
+<edmx:StorageModels>
+<Schema Namespace="SchedulerDBModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="data source=&quot;C:\Users\Brian.Okeefe\Documents\Visual Studio 2013\Projects\WMCTraktScheduler\TraktWmcScheduler\Scheduler.db&quot;" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="oauth">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="auth_token" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="refresh_token" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="expires" Type="datetime" Nullable="false" />
+          <Property Name="scope" Type="nvarchar" MaxLength="4000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WatchlistMovies">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="Year" Type="int" Nullable="false" />
+          <Property Name="TraktId" Type="int" Nullable="false" />
+          <Property Name="Scheduled" Type="bit" Nullable="false" />
+          <Property Name="ScheduleId" Type="integer" Nullable="false" />
+          <Property Name="Removed" Type="bit" Nullable="false" />
+          <Property Name="Completed" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="SchedulerDBModelStoreContainer">
+          <EntitySet Name="oauth" EntityType="Self.oauth" store:Type="Tables" />
+          <EntitySet Name="WatchlistMovies" EntityType="Self.WatchlistMovies" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+<!-- CSDL content -->
+<edmx:ConceptualModels>
+<Schema Namespace="SchedulerDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="SchedulerDBEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="WatchlistMovies" EntityType="SchedulerDBModel.WatchlistMovie" />
+    <EntitySet Name="OAuth" EntityType="SchedulerDBModel.OAuth" />
+  </EntityContainer>
+  <EntityType Name="WatchlistMovie">
+    <Key>
+            <PropertyRef Name="id" />
+    </Key>
+    <Property Name="Title" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
+    <Property Name="Year" Type="Int32" Nullable="false" />
+    <Property Name="TraktId" Type="Int32" Nullable="false" />
+    <Property Name="Scheduled" Type="Boolean" Nullable="false" />
+    <Property Name="ScheduleId" Type="Int64" Nullable="false" />
+    <Property Name="Removed" Type="Boolean" Nullable="false" />
+    <Property Name="Completed" Type="Boolean" Nullable="false" />
+          <Property Name="id" Type="Int32" annotation:StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OAuth">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthToken" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
+    <Property Name="RefreshToken" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
+    <Property Name="Expires" Type="DateTime" Nullable="false" />
+    <Property Name="Scope" Type="String" Nullable="false" MaxLength="4000" Unicode="true" FixedLength="false" />
+  </EntityType>
+</Schema>
+</edmx:ConceptualModels>
+<!-- C-S mapping content -->
+<edmx:Mappings>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SchedulerDBModelStoreContainer" CdmEntityContainer="SchedulerDBEntities">
+    <EntitySetMapping Name="WatchlistMovies">
+      <EntityTypeMapping TypeName="SchedulerDBModel.WatchlistMovie">
+        <MappingFragment StoreEntitySet="WatchlistMovies">
+          <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="TraktId" ColumnName="TraktId" />
+          <ScalarProperty Name="Scheduled" ColumnName="Scheduled" />
+          <ScalarProperty Name="ScheduleId" ColumnName="ScheduleId" />
+          <ScalarProperty Name="Removed" ColumnName="Removed" />
+          <ScalarProperty Name="Completed" ColumnName="Completed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OAuth">
+      <EntityTypeMapping TypeName="SchedulerDBModel.OAuth">
+        <MappingFragment StoreEntitySet="oauth">
+          <ScalarProperty Name="Id" ColumnName="id" />
+          <ScalarProperty Name="AuthToken" ColumnName="auth_token" />
+          <ScalarProperty Name="RefreshToken" ColumnName="refresh_token" />
+          <ScalarProperty Name="Expires" ColumnName="expires" />
+          <ScalarProperty Name="Scope" ColumnName="scope" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
+</edmx:Mappings>
+</edmx:Runtime>
+<!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+<edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+<Connection><DesignerInfoPropertySet><DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" /></DesignerInfoPropertySet></Connection>
+<edmx:Options><DesignerInfoPropertySet><DesignerProperty Name="ValidateOnBuild" Value="True" /><DesignerProperty Name="EnablePluralization" Value="False" /><DesignerProperty Name="IncludeForeignKeysInModel" Value="True" /><DesignerProperty Name="UseLegacyProvider" Value="False" /><DesignerProperty Name="CodeGenerationStrategy" Value="None" /></DesignerInfoPropertySet></edmx:Options>
+<edmx:Diagrams >
+      <Diagram DiagramId="2f93b0ccaeac4e16af6bc0a312325517" Name="Diagram1">
+        <EntityTypeShape EntityType="SchedulerDBModel.OAuth" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchedulerDBModel.WatchlistMovie" Width="1.5" PointX="4.5" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+</edmx:Designer></edmx:Edmx>
